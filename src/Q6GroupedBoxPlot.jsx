@@ -185,8 +185,9 @@ export default function Q6GroupedBoxPlot() {
         flexDirection: "column",
         alignItems: "center",
         justifyContent: "center",
-        padding: "40px 24px",
-        fontFamily: "'Georgia', serif",
+        padding: "clamp(28px, 7vh, 40px) clamp(16px, 5vw, 24px)",
+        fontFamily:
+          "'Poppins', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif",
       }}
     >
       {/* Header */}
@@ -283,7 +284,7 @@ export default function Q6GroupedBoxPlot() {
           background: "#FFFFFF",
           borderRadius: 16,
           border: "1px solid #E5E7EB",
-          padding: "20px 16px 12px 16px",
+          padding: "20px clamp(12px, 3vw, 16px) 12px clamp(12px, 3vw, 16px)",
           position: "relative",
           boxShadow: "0 18px 45px rgba(15,23,42,0.08)",
         }}

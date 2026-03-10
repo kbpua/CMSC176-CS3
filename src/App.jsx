@@ -251,16 +251,18 @@ function App() {
     <div
       style={{
         minHeight: "100vh",
-        background: "#F8F4E7",
-        fontFamily: "'Georgia', serif",
-        padding: "48px 0 64px",
+        background:
+          "linear-gradient(180deg, #F9FAFB 0%, #F3F4F6 45%, #F9FAFB 100%)",
+        fontFamily:
+          "'Poppins', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif",
+        padding: "clamp(32px, 6vh, 48px) 0 clamp(48px, 8vh, 64px)",
       }}
     >
       {/* Hero Header */}
       <div
         style={{
           textAlign: "center",
-          padding: "64px 24px 48px",
+          padding: "clamp(40px, 8vh, 64px) clamp(16px, 5vw, 24px) 48px",
         }}
       >
         <div
@@ -362,7 +364,7 @@ function App() {
         style={{
           maxWidth: 800,
           margin: "0 auto 40px",
-          padding: "0 24px",
+          padding: "0 clamp(16px, 5vw, 24px)",
           display: "flex",
           alignItems: "center",
           gap: 16,
@@ -392,10 +394,10 @@ function App() {
         style={{
           maxWidth: 860,
           margin: "0 auto",
-          padding: "0 24px",
+          padding: "0 clamp(16px, 5vw, 24px)",
           display: "grid",
           gridTemplateColumns: "repeat(auto-fill, minmax(260px, 1fr))",
-          gap: 20,
+          gap: 16,
         }}
       >
         {charts.map((chart) => {

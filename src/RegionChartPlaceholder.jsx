@@ -48,8 +48,9 @@ export default function RegionChartPlaceholder() {
         flexDirection: "column",
         alignItems: "center",
         justifyContent: "center",
-        fontFamily: "'Georgia', serif",
-        padding: "32px 16px",
+        fontFamily:
+          "'Poppins', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif",
+        padding: "clamp(24px, 6vh, 40px) clamp(16px, 5vw, 24px)",
       }}
     >
       {/* Title Block */}
@@ -90,9 +91,9 @@ export default function RegionChartPlaceholder() {
           background: "#FFFFFF",
           borderRadius: 16,
           boxShadow: "0 4px 24px rgba(0,0,0,0.08)",
-          padding: "32px 24px 24px",
+          padding: "24px clamp(16px, 4vw, 24px) 20px",
           width: "100%",
-          maxWidth: 750,
+          maxWidth: 780,
         }}
       >
         <ResponsiveContainer width="100%" height={520}>
@@ -131,7 +132,8 @@ export default function RegionChartPlaceholder() {
               tick={{
                 fill: "#475569",
                 fontSize: 12,
-                fontFamily: "Georgia, serif",
+                fontFamily:
+                  "'Poppins', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif",
               }}
               axisLine={false}
               tickLine={false}
@@ -142,7 +144,8 @@ export default function RegionChartPlaceholder() {
                 borderRadius: 8,
                 border: "none",
                 boxShadow: "0 4px 16px rgba(0,0,0,0.12)",
-                fontFamily: "Georgia, serif",
+                fontFamily:
+                  "'Poppins', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif",
                 fontSize: 13,
               }}
               cursor={{ fill: "#F0F9FF" }}

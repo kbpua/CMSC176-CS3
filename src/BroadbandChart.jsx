@@ -45,11 +45,12 @@ export default function BroadbandChart() {
       style={{
         minHeight: "100vh",
         background: "#F8F9FC",
-        fontFamily: "'Georgia', serif",
+        fontFamily:
+          "'Poppins', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif",
         display: "flex",
         flexDirection: "column",
         alignItems: "center",
-        padding: "48px 24px",
+        padding: "clamp(32px, 7vh, 48px) clamp(16px, 5vw, 24px)",
         boxSizing: "border-box",
       }}
     >
@@ -73,7 +74,6 @@ export default function BroadbandChart() {
             fontWeight: 700,
             margin: "0 0 14px",
             lineHeight: 1.25,
-            fontFamily: "'Georgia', serif",
             letterSpacing: -0.5,
           }}
         >

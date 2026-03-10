@@ -33,8 +33,9 @@ export default function GroupedBarChart() {
         flexDirection: "column",
         alignItems: "center",
         justifyContent: "center",
-        fontFamily: "'Georgia', serif",
-        padding: "32px 16px",
+        fontFamily:
+          "'Poppins', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif",
+        padding: "clamp(24px, 6vh, 40px) clamp(16px, 5vw, 24px)",
       }}
     >
       <div style={{ textAlign: "center", marginBottom: 32, maxWidth: 600 }}>
@@ -73,9 +74,9 @@ export default function GroupedBarChart() {
           background: "#FFFFFF",
           borderRadius: 16,
           boxShadow: "0 4px 24px rgba(0,0,0,0.08)",
-          padding: "32px 24px 24px",
+          padding: "24px clamp(16px, 4vw, 24px) 20px",
           width: "100%",
-          maxWidth: 700,
+          maxWidth: 720,
         }}
       >
         <ResponsiveContainer width="100%" height={380}>
@@ -95,7 +96,8 @@ export default function GroupedBarChart() {
               tick={{
                 fill: "#475569",
                 fontSize: 13,
-                fontFamily: "Georgia, serif",
+                fontFamily:
+                  "'Poppins', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif",
               }}
               axisLine={{ stroke: "#CBD5E1" }}
               tickLine={false}
@@ -135,7 +137,8 @@ export default function GroupedBarChart() {
                 borderRadius: 8,
                 border: "none",
                 boxShadow: "0 4px 16px rgba(0,0,0,0.12)",
-                fontFamily: "Georgia, serif",
+                fontFamily:
+                  "'Poppins', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif",
                 fontSize: 13,
               }}
               cursor={{ fill: "#F1F5F9" }}
@@ -146,7 +149,8 @@ export default function GroupedBarChart() {
               iconType="square"
               wrapperStyle={{
                 fontSize: 13,
-                fontFamily: "Georgia, serif",
+                fontFamily:
+                  "'Poppins', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif",
                 paddingBottom: 12,
               }}
             />

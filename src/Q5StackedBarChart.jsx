@@ -186,7 +186,8 @@ const CustomTooltip = ({ active, payload, label }) => {
           border: "1px solid rgba(15,23,42,0.08)",
           borderRadius: "10px",
           padding: "14px 18px",
-          fontFamily: "'Georgia', serif",
+          fontFamily:
+            "'Poppins', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif",
           boxShadow: "0 10px 30px rgba(15,23,42,0.15)",
         }}
       >
@@ -311,8 +312,9 @@ export default function Q5StackedBarChart() {
         flexDirection: "column",
         alignItems: "center",
         justifyContent: "center",
-        padding: "40px 24px",
-        fontFamily: "'Georgia', serif",
+        padding: "clamp(28px, 7vh, 40px) clamp(16px, 5vw, 24px)",
+        fontFamily:
+          "'Poppins', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif",
       }}
     >
 
@@ -400,11 +402,11 @@ export default function Q5StackedBarChart() {
       <div
         style={{
           width: "100%",
-          maxWidth: 960,
+          maxWidth: 980,
           background: "#FFFFFF",
           borderRadius: 16,
           border: "1px solid #E5E7EB",
-          padding: "24px 16px 8px 16px",
+          padding: "20px clamp(12px, 3vw, 16px) 8px clamp(12px, 3vw, 16px)",
           boxShadow: "0 18px 45px rgba(15,23,42,0.08)",
         }}
       >

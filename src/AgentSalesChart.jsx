@@ -71,7 +71,8 @@ const CustomTooltip = ({ active, payload, label }) => {
           borderRadius: "8px",
           padding: "12px 16px",
           boxShadow: "0 10px 24px rgba(15,23,42,0.12)",
-          fontFamily: "monospace",
+          fontFamily:
+            "'Poppins', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif",
           fontSize: "12px",
           minWidth: "180px",
         }}
@@ -121,21 +122,19 @@ export default function SalesChart() {
   const [highlight, setHighlight] = useState(null);
 
   return (
-    <div
-      style={{
-        background: "#F8F9FC",
-        minHeight: "100vh",
-        display: "flex",
-        flexDirection: "column",
-        alignItems: "center",
-        justifyContent: "center",
-        padding: "40px 24px",
-        fontFamily: "'Georgia', serif",
-      }}
-    >
-      <style>
-        {`@import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400;500&family=Playfair+Display:wght@700&display=swap');`}
-      </style>
+      <div
+        style={{
+          background: "#F8F9FC",
+          minHeight: "100vh",
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+          justifyContent: "center",
+        padding: "clamp(28px, 7vh, 40px) clamp(16px, 5vw, 24px)",
+          fontFamily:
+            "'Poppins', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif",
+        }}
+      >
 
       <div style={{ textAlign: "center", marginBottom: 40, maxWidth: 700 }}>
         <p
@@ -152,9 +151,8 @@ export default function SalesChart() {
         </p>
         <h1
           style={{
-            fontFamily: "'Playfair Display', serif",
             color: "#1E293B",
-            fontSize: "clamp(22px, 4vw, 36px)",
+            fontSize: "clamp(22px, 4vw, 32px)",
             fontWeight: 700,
             margin: "0 0 12px",
             lineHeight: 1.2,
@@ -183,9 +181,9 @@ export default function SalesChart() {
           border: "1px solid #E2E8F0",
           borderRadius: 16,
           boxShadow: "0 4px 24px rgba(0,0,0,0.08)",
-          padding: "32px 24px 24px",
+          padding: "24px clamp(16px, 4vw, 24px) 20px",
           width: "100%",
-          maxWidth: 900,
+          maxWidth: 920,
         }}
       >
         <div

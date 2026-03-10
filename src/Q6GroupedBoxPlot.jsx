@@ -126,26 +126,12 @@ export default function Q6GroupedBoxPlot() {
   const [hoveredStatus, setHoveredStatus] = useState(null);
   const [tooltip, setTooltip] = useState(null);
 
-  const maxVal = useMemo(() => {
-    let max = 0;
-    regions.forEach((r) => {
-      statuses.forEach((s) => {
-        const stats = computeBoxStats(tenureData[r][s]);
-        const localMax = stats.whiskerHigh;
-        if (localMax > max) max = localMax;
-      });
-    });
-    return Math.ceil(max / 5) * 5 + 5;
-  }, []);
+  const maxVal = 30;
 
   const yScale = (val) => {
-    const effectiveMax = maxVal * 0.7;
-    const ratio = Math.min(val / effectiveMax, 1);
-    const raw =
-      CHART_PADDING.top + PLOT_HEIGHT - ratio * PLOT_HEIGHT;
-    const topLimit = CHART_PADDING.top + 5;
-    const bottomLimit = CHART_PADDING.top + PLOT_HEIGHT - 5;
-    return Math.max(topLimit, Math.min(bottomLimit, raw));
+    const clamped = Math.min(Math.max(val, 0), maxVal);
+    const ratio = clamped / maxVal;
+    return CHART_PADDING.top + PLOT_HEIGHT - ratio * PLOT_HEIGHT;
   };
 
   const yTicks = [];
@@ -294,7 +280,23 @@ export default function Q6GroupedBoxPlot() {
           viewBox={`0 0 ${CHART_WIDTH} ${CHART_HEIGHT}`}
           style={{ overflow: "visible" }}
         >
-          {/* Grid lines */}
+          {/* Y-axis label — draw first so tick numbers render on top and stay readable */}
+          <text
+            x={18}
+            y={CHART_PADDING.top + PLOT_HEIGHT / 2}
+            textAnchor="middle"
+            dominantBaseline="middle"
+            fill="#6B7280"
+            fontSize={13}
+            fontWeight={600}
+            transform={`rotate(-90, 18, ${
+              CHART_PADDING.top + PLOT_HEIGHT / 2
+            })`}
+          >
+            Tenure (Months)
+          </text>
+
+          {/* Grid lines and tick labels */}
           {yTicks.map((tick) => (
             <g key={tick}>
               <line
@@ -312,27 +314,12 @@ export default function Q6GroupedBoxPlot() {
                 dominantBaseline="middle"
                 fill="#6B7280"
                 fontSize={11}
+                fontFamily="system-ui, -apple-system, sans-serif"
               >
                 {tick}
               </text>
             </g>
           ))}
-
-          {/* Y-axis label */}
-          <text
-            x={18}
-            y={CHART_PADDING.top + PLOT_HEIGHT / 2}
-            textAnchor="middle"
-            dominantBaseline="middle"
-            fill="#6B7280"
-            fontSize={13}
-            fontWeight={600}
-            transform={`rotate(-90, 18, ${
-              CHART_PADDING.top + PLOT_HEIGHT / 2
-            })`}
-          >
-            Tenure (Months)
-          </text>
 
           {/* X-axis base line */}
           <line

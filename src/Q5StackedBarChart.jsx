@@ -317,6 +317,28 @@ export default function Q5StackedBarChart() {
           "'Poppins', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif",
       }}
     >
+      {/* Pattern for Terminated (red) bar — diagonal stripes for accessibility */}
+      <svg width={0} height={0} style={{ position: "absolute" }} aria-hidden="true">
+        <defs>
+          <pattern
+            id="q5-terminated-stripes"
+            patternUnits="userSpaceOnUse"
+            width="6"
+            height="6"
+            patternTransform="rotate(-45)"
+          >
+            <rect width="6" height="6" fill={STATUS_COLORS.Terminated} />
+            <line
+              x1="0"
+              y1="0"
+              x2="0"
+              y2="6"
+              stroke="rgba(255,255,255,0.55)"
+              strokeWidth="1.4"
+            />
+          </pattern>
+        </defs>
+      </svg>
 
       <div style={{ textAlign: "center", marginBottom: 8, maxWidth: 900 }}>
         <p
@@ -378,14 +400,26 @@ export default function Q5StackedBarChart() {
             onMouseEnter={() => setHoveredStatus(status)}
             onMouseLeave={() => setHoveredStatus(null)}
           >
-            <div
-              style={{
-                width: 14,
-                height: 14,
-                borderRadius: 4,
-                background: STATUS_COLORS[status],
-              }}
-            />
+            {status === "Terminated" ? (
+              <svg width={14} height={14} style={{ flexShrink: 0 }} aria-hidden="true">
+                <rect
+                  width={14}
+                  height={14}
+                  rx={4}
+                  ry={4}
+                  fill="url(#q5-terminated-stripes)"
+                />
+              </svg>
+            ) : (
+              <div
+                style={{
+                  width: 14,
+                  height: 14,
+                  borderRadius: 4,
+                  background: STATUS_COLORS[status],
+                }}
+              />
+            )}
             <span
               style={{
                 fontSize: 13,
@@ -455,7 +489,11 @@ export default function Q5StackedBarChart() {
                 key={status}
                 dataKey={status}
                 stackId="a"
-                fill={STATUS_COLORS[status]}
+                fill={
+                  status === "Terminated"
+                    ? "url(#q5-terminated-stripes)"
+                    : STATUS_COLORS[status]
+                }
                 opacity={hoveredStatus && hoveredStatus !== status ? 0.2 : 1}
                 radius={status === "On-Hold" ? [4, 4, 0, 0] : [0, 0, 0, 0]}
               />

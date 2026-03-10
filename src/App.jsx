@@ -3,6 +3,8 @@ import GroupedBarChart from "./GroupedBarChart";
 import RegionChartPlaceholder from "./RegionChartPlaceholder";
 import SalesChart from "./AgentSalesChart";
 import BroadbandChart from "./BroadbandChart";
+import Q5StackedBarChart from "./Q5StackedBarChart";
+import Q6GroupedBoxPlot from "./Q6GroupedBoxPlot";
 
 const VIEWS = {
   HOME: "home",
@@ -10,6 +12,8 @@ const VIEWS = {
   REGION: "region",
   AGENT_SALES: "agentSales",
   INSTALL_TIME: "installTime",
+  ACCOUNT_STATUS: "accountStatus",
+  ACCOUNT_TENURE: "accountTenure",
 };
 
 const charts = [
@@ -84,11 +88,16 @@ const charts = [
     subtitle: "Per Agent Per Region",
     description:
       "See a breakdown of account statuses across agents and regions in a single unified view.",
-    features: ["Coming Soon"],
+    features: [
+      "Grouped Stacked Bar Chart",
+      "Region Brackets",
+      "Interactive Legend & Tooltip",
+    ],
     icon: "📊",
     accent: "#065F46",
     light: "#ECFDF5",
-    disabled: true,
+    view: VIEWS.ACCOUNT_STATUS,
+    disabled: false,
   },
   {
     id: 6,
@@ -97,11 +106,16 @@ const charts = [
     subtitle: "By Status & Region",
     description:
       "Understand the tenure distribution of accounts in different statuses across all regions.",
-    features: ["Coming Soon"],
+    features: [
+      "Grouped Box Plot",
+      "Whiskers & Outliers",
+      "Status-by-Region Comparison",
+    ],
     icon: "📅",
     accent: "#9F1239",
     light: "#FFF1F2",
-    disabled: true,
+    view: VIEWS.ACCOUNT_TENURE,
+    disabled: false,
   },
 ];
 
@@ -199,6 +213,40 @@ function App() {
     );
   }
 
+  if (view === VIEWS.ACCOUNT_STATUS) {
+    return (
+      <>
+        <button
+          type="button"
+          onClick={() => setView(VIEWS.HOME)}
+          style={isBackHovered ? backButtonHoverStyle : backButtonStyle}
+          onMouseEnter={() => setIsBackHovered(true)}
+          onMouseLeave={() => setIsBackHovered(false)}
+        >
+          ← Back to menu
+        </button>
+        <Q5StackedBarChart />
+      </>
+    );
+  }
+
+  if (view === VIEWS.ACCOUNT_TENURE) {
+    return (
+      <>
+        <button
+          type="button"
+          onClick={() => setView(VIEWS.HOME)}
+          style={isBackHovered ? backButtonHoverStyle : backButtonStyle}
+          onMouseEnter={() => setIsBackHovered(true)}
+          onMouseLeave={() => setIsBackHovered(false)}
+        >
+          ← Back to menu
+        </button>
+        <Q6GroupedBoxPlot />
+      </>
+    );
+  }
+
   return (
     <div
       style={{
@@ -286,14 +334,18 @@ function App() {
           ].map(({ value, label }) => (
             <div key={label} style={{ textAlign: "center" }}>
               <div
-                style={{ fontSize: 28, fontWeight: "bold", color: "#F8FAFC" }}
+                style={{
+                  fontSize: 28,
+                  fontWeight: "bold",
+                  color: "#111827",
+                }}
               >
                 {value}
               </div>
               <div
                 style={{
                   fontSize: 12,
-                  color: "#64748B",
+                  color: "#4B5563",
                   fontFamily: "monospace",
                   letterSpacing: 1,
                 }}
@@ -431,7 +483,7 @@ function App() {
                 style={{
                   fontSize: 17,
                   fontWeight: "bold",
-                  color: "#F1F5F9",
+                  color: "#111827",
                   margin: "0 0 4px",
                 }}
               >

@@ -1,11 +1,15 @@
 import { useState } from "react";
 import GroupedBarChart from "./GroupedBarChart";
 import RegionChartPlaceholder from "./RegionChartPlaceholder";
+import SalesChart from "./AgentSalesChart";
+import BroadbandChart from "./BroadbandChart";
 
 const VIEWS = {
   HOME: "home",
   AGE_SEX: "ageSex",
   REGION: "region",
+  AGENT_SALES: "agentSales",
+  INSTALL_TIME: "installTime",
 };
 
 const charts = [
@@ -44,11 +48,16 @@ const charts = [
     subtitle: "Per Region Performance",
     description:
       "Identify top-performing sales agents across different regions and compare their broadband sales output.",
-    features: ["Coming Soon"],
+    features: [
+      "Grouped Bar Chart",
+      "Agent Filter Highlight",
+      "Custom Tooltip with Top Performer",
+    ],
     icon: "🏆",
     accent: "#7C3AED",
     light: "#F5F3FF",
-    disabled: true,
+    view: VIEWS.AGENT_SALES,
+    disabled: false,
   },
   {
     id: 4,
@@ -57,11 +66,16 @@ const charts = [
     subtitle: "vs. Regional Average",
     description:
       "Visualize how long broadband service installation takes per region relative to the overall average.",
-    features: ["Coming Soon"],
+    features: [
+      "Diverging Bar Chart",
+      "Deviation from Mean",
+      "Hover Details per Region",
+    ],
     icon: "⏱️",
     accent: "#B45309",
     light: "#FFFBEB",
-    disabled: true,
+    view: VIEWS.INSTALL_TIME,
+    disabled: false,
   },
   {
     id: 5,
@@ -147,6 +161,40 @@ function App() {
           ← Back to menu
         </button>
         <RegionChartPlaceholder />
+      </>
+    );
+  }
+
+  if (view === VIEWS.AGENT_SALES) {
+    return (
+      <>
+        <button
+          type="button"
+          onClick={() => setView(VIEWS.HOME)}
+          style={isBackHovered ? backButtonHoverStyle : backButtonStyle}
+          onMouseEnter={() => setIsBackHovered(true)}
+          onMouseLeave={() => setIsBackHovered(false)}
+        >
+          ← Back to menu
+        </button>
+        <SalesChart />
+      </>
+    );
+  }
+
+  if (view === VIEWS.INSTALL_TIME) {
+    return (
+      <>
+        <button
+          type="button"
+          onClick={() => setView(VIEWS.HOME)}
+          style={isBackHovered ? backButtonHoverStyle : backButtonStyle}
+          onMouseEnter={() => setIsBackHovered(true)}
+          onMouseLeave={() => setIsBackHovered(false)}
+        >
+          ← Back to menu
+        </button>
+        <BroadbandChart />
       </>
     );
   }
